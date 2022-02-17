@@ -287,10 +287,10 @@ int main()
 
 	list<Spot> path=a_starNew(grid,start,endp);
 
-	// for(Spot i : path){
-	// 	i.printSpot();
-	// 	canvas[i.i][i.j]='#';
-	// }
+	for(Spot i : path){
+		// i.printSpot();
+		canvas[i.i][i.j]='#';
+	}
 	canvas[start.i][start.j]='O';
 	canvas[endp.i][endp.j]='X';
 
