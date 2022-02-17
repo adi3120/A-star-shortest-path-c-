@@ -235,7 +235,10 @@ int main()
 
 	Spot start;
 	Spot endp;
-
+	cout<<"Enter number of columns : ";
+	cin>>cols;
+	cout<<"Enter number of rows : ";
+	cin>>rows;
 
 	grid.resize(cols);
 
@@ -268,18 +271,26 @@ int main()
 			grid[i][j].addNeighbors();
 		}
 	}
+	int sx,sy,ex,ey;
+	cout<<"Enter starting point's x : ";
+	cin>>sx;
+	cout<<"Enter starting point's y : ";
+	cin>>sy;
+	cout<<"Enter Goal point's x : ";
+	cin>>ex;
+	cout<<"Enter Goal point's y : ";
+	cin>>ey;
 
-
-	start = grid[10][0];
-	endp = grid[cols- 10][rows - 5];
+	start = grid[sx][sy];
+	endp = grid[ex- 1][ey - 1];
 
 
 	list<Spot> path=a_starNew(grid,start,endp);
 
-	for(Spot i : path){
-		i.printSpot();
-		canvas[i.i][i.j]='#';
-	}
+	// for(Spot i : path){
+	// 	i.printSpot();
+	// 	canvas[i.i][i.j]='#';
+	// }
 	canvas[start.i][start.j]='O';
 	canvas[endp.i][endp.j]='X';
 
