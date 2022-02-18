@@ -1,5 +1,3 @@
-#define s_width 80
-#define s_height 80
 #include <vector>
 #include<list>
 #include <iostream>
@@ -124,13 +122,9 @@ list<Spot> reconstructPath(Spot *current,Spot start)
 	list<Spot> total_path;
 	total_path.push_back(*current);
 
-
 	while((current->i!=start.i) && (current->j!=start.j)){
-		// current.printParents();
-		// cout<<endl;
 		current=current->parent;
 		total_path.push_front(*current);
-
 	}
 
 	return total_path;
@@ -179,16 +173,12 @@ list<Spot> a_starNew(vector<vector<Spot>> & grid,Spot start, Spot endp){
 
 	vector<Spot * > openSet;
 
-
 	start.g=0;
 	start.f=heuristic(start,endp);
 
 	openSet.push_back(&start);
 
-
 	while(openSet.empty()==false){
-
-
 
 		Spot * current=leastFnode(openSet);
 
@@ -201,27 +191,20 @@ list<Spot> a_starNew(vector<vector<Spot>> & grid,Spot start, Spot endp){
 
 		for(int i=0;i<current->neighbors.size();i++){
 
-			
-
-			
 			float tg=current->g+1;
 
 			if(tg<current->neighbors[i]->g){
 
 				current->neighbors[i]->parent=current;
 
-
-
 				current->neighbors[i]->g=tg;
 
 				current->neighbors[i]->f=tg+heuristic(*current->neighbors[i],endp);
-
 
 				if(!includes(openSet,*current->neighbors[i])){
 					openSet.push_back(current->neighbors[i]);
 				}
 			}
-
 
 		}
 
